@@ -53,3 +53,31 @@ void temp :: signUP(){
     file<<userName<<"*"<<Email<<"*"<<password<<endl;
     file.close();
 }
+void temp :: login(){
+ 
+    cout<<"----------LOGIN---------"<<endl;
+    cout<<"Enter Your User Name :: "<<endl;
+    getline(cin,searchName);
+    cout<<"Enter Your Password :: "<<endl;
+    getline(cin,searchPass);
+
+    file.open("loginData.txt",ios :: in);
+    getline(file,userName,'*');
+    getline(file,Email,'*');
+    getline(file,password,'\n');
+    while(!file.eof()){
+        if(userName == searchName){
+            if(password == searchPass){
+                cout<<"\nAccount Login Succesfull...!";
+                cout<<"\nUsername :: "<<userName<<endl;
+                cout<<"\nEmail :: "<<Email<<endl;
+            }else{
+                cout<<"Password is Incorrect...!";
+            }
+        }
+    getline(file,userName,'*');
+    getline(file,Email,'*');
+    getline(file,password,'\n');
+    }
+    file.close();
+}
