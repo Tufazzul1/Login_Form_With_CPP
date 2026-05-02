@@ -81,3 +81,30 @@ void temp :: login(){
     }
     file.close();
 }
+void temp :: forgot(){
+    cout<<"\nEnter Your UserName :: ";
+    getline(cin,searchName);
+    cout<<"\nEnter Your Email Address :: ";
+    getline(cin,searchEmail);
+
+    file.open("loginData.txt",ios :: in);
+    getline(file,userName,'*');
+    getline(file,Email,'*');
+    getline(file,password,'\n');
+    while(!file.eof()){
+        if(userName == searchName){
+            if(Email == searchEmail){
+                cout<<"\nPassword Found...!"<<endl;
+                cout<<"Your Password :: "<<password<<endl;
+            }else{
+                cout<<"Account Not found...!\n";
+            }
+        }else{
+            cout<<"\nNot fount...!\n";
+        }
+    getline(file,userName,'*');
+    getline(file,Email,'*');
+    getline(file,password,'\n');
+    }
+    file.close();
+}
